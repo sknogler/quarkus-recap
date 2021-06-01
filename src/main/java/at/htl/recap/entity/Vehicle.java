@@ -29,6 +29,15 @@ public class Vehicle {
     @Column(name = "V_YOC")
     int yoc;
 
+    public Vehicle() {
+    }
+
+    public Vehicle(String brand, String model, int yoc) {
+        this.brand = brand;
+        this.model = model;
+        this.yoc = yoc;
+    }
+
     public int age(){
         return LocalDate.now().getYear() - yoc;
     }
