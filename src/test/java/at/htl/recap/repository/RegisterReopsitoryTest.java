@@ -4,6 +4,7 @@ import at.htl.recap.entity.Register;
 import at.htl.recap.entity.Vehicle;
 import io.agroal.api.AgroalDataSource;
 import io.quarkus.test.junit.QuarkusTest;
+import org.assertj.db.type.Request;
 import org.assertj.db.type.Table;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -48,5 +49,11 @@ class RegisterReopsitoryTest {
                     .isEqualTo(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .column("R_ENDDATE").value().isNull();
 
+        Request vehicleRequest = new Request(
+                ds,
+                "select V_ID, V_BRAND, V_YOC, V_MODEL where V_ID = " + vehicle.getId()
+        );
+
+        output(vehicleRequest).toConsole();
     }
 }
