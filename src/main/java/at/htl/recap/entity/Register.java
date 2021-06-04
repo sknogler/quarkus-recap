@@ -1,10 +1,12 @@
 package at.htl.recap.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-import io.quarkus.runtime.annotations.CommandLineArguments;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+
+import static org.hibernate.annotations.CascadeType.PERSIST;
 
 @Entity
 @Table(name = "V_REGISTER")
@@ -29,7 +31,8 @@ public class Register extends PanacheEntityBase {
     @Column(name = "R_OWNER")
     public String owner;
 
-    @Column(name = "R_V_ID")
+    @JoinColumn
+    @Cascade(PERSIST)
     @ManyToOne
     public Vehicle vehicle;
 
@@ -38,4 +41,17 @@ public class Register extends PanacheEntityBase {
 
     @Column(name = "R_STARTDATE")
     public LocalDate startDate;
+
+    public Register(String licensePLate,
+                    String owner,
+                    Vehicle vehicle
+    ) {
+        this.licensePLate = licensePLate;
+        this.owner = owner;
+        this.vehicle = vehicle;
+        this.startDate = LocalDate.now();
+    }
+
+    public Register() {
+    }
 }
