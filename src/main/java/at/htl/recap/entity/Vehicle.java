@@ -1,5 +1,7 @@
 package at.htl.recap.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,7 +12,7 @@ import java.time.LocalDate;
         sequenceName = "VEHICLE_SEQ",
         initialValue = 1000
 )
-public class Vehicle {
+public class Vehicle extends PanacheEntityBase {
 
     @Id
     @Column(name = "V_ID")

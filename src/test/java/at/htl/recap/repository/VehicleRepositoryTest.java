@@ -24,23 +24,23 @@ class VehicleRepositoryTest {
     AgroalDataSource ds;
 
     @BeforeEach
+    @Transactional
     void setUp(){
         vehicleRepository.deleteAll();
     }
 
     @Test
-    @Transactional
-    void t010_insertSimpleVehicle(){
-        Vehicle vehicle = new Vehicle("opel", "kedett", 1972);
+    void t010_insertSimpleVehicle() {
+
+        Vehicle vehicle = new Vehicle("Opel", "Kapitän", 1972);
         vehicleRepository.persist(vehicle);
 
         Table table = new Table(ds, "V_VEHICLE");
         output(table).toConsole();
-
         assertThat(table).hasNumberOfRows(1)
                 .row()
-                .column("V_ID").value().isEqualTo(1000)
-                .column("V_BRAND").value().isEqualTo("opeö")
-                .column("V_MODEL").value().isEqualTo("kadett");
+                .column("V_ID").value().isGreaterThanOrEqualTo(1000)
+                .column("V_BRAND").value().isEqualTo("Opel")
+                .column("V_MODEL").value().isEqualTo("Kapitän");
     }
 }
