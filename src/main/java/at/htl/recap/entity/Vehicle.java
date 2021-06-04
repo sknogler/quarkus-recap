@@ -46,6 +46,6 @@ public class Vehicle extends PanacheEntityBase {
 
     @Override
     public String toString() {
-        return String.format("%s %s", brand, model);
+        return String.format("%d %s %s", id, brand, model);
     }
 }

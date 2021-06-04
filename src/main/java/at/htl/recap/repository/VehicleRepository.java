@@ -10,6 +10,4 @@ import javax.transaction.Transactional;
 @Transactional
 public class VehicleRepository implements PanacheRepository<Vehicle> {
 
-
-
 }
