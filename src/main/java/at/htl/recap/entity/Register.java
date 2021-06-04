@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 import static org.hibernate.annotations.CascadeType.PERSIST;
+import static org.hibernate.annotations.CascadeType.REFRESH;
 
 @Entity
 @Table(name = "V_REGISTER")
@@ -32,7 +33,7 @@ public class Register extends PanacheEntityBase {
     public String owner;
 
     @JoinColumn
-    @Cascade(PERSIST)
+    @Cascade({PERSIST, REFRESH})
     @ManyToOne
     public Vehicle vehicle;
 
