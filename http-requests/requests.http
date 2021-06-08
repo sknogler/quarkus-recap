@@ -1,1 +1,5 @@
 GET localhost:8080/api/vehicle/path/cock
+
+###
+
+GET localhost:8080/api/vehicle/query?grade=4&name=4ahtim
