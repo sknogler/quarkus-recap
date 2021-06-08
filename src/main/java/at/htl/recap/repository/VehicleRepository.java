@@ -10,4 +10,8 @@ import javax.transaction.Transactional;
 @Transactional
 public class VehicleRepository implements PanacheRepository<Vehicle> {
 
+    public Vehicle save(Vehicle vehicle){
+        return getEntityManager().merge(vehicle);
+    }
+
 }
