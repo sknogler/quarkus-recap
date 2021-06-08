@@ -23,13 +23,13 @@ public class Vehicle extends PanacheEntityBase {
     private Long id;
 
     @Column(name = "V_BRAND")
-    String brand;
+    public String brand;
 
     @Column(name = "V_MODEL")
-    String model;
+    public String model;
 
     @Column(name = "V_YOC")
-    int yoc;
+    public  int yoc;
 
     public Vehicle() {
     }

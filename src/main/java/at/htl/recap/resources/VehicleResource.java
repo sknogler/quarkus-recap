@@ -1,10 +1,11 @@
 package at.htl.recap.resources;
 
-import org.jboss.logging.annotations.Param;
+import at.htl.recap.entity.Vehicle;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.awt.*;
+import javax.ws.rs.core.Response;
+
 
 @Path("vehicle")
 public class VehicleResource {
@@ -24,5 +25,15 @@ public class VehicleResource {
             @QueryParam("name") String name
     ){
         return String.format("%d grade in class %s", grade, name);
+    }
+
+
+    @Path("response")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDummyVehicle(){
+        Vehicle opel = new Vehicle("Opel", "Kadett", 1979);
+
+        return Response.ok(opel).build();
     }
 }
